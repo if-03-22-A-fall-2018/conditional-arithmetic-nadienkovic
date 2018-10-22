@@ -1,6 +1,6 @@
 #include "stdio.h"
 
-int* number;
-int* choice;
-void GetNumber(int* number);
-void AddOrMult(int* choice);
+int setOperator();
+int getNumber();
+void Add(int* number);
+void Mult(int* number)

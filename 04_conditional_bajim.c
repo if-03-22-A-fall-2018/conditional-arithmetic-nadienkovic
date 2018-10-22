@@ -2,50 +2,50 @@
 #include <stdio.h>
 
 int main(int argc, char const *argv[]) {
-
-  AddOrMult(*choice);
-
-
+  int operator = setOperator();
+  int number = getNumber();
+  if (op == 1) {
+    Add(&number);
+  }
+  else if (op == 2) {
+    Mult(&number);
+  }
   return 0;
 }
-void AddOrMult(int* choice){
+
+int setOperator(){
+  int operator = 0;
   do {
-    printf("Select Add (1) or Multiply (2): ");
-    scanf("%d",choice);
-  } while(choice != 1 && choice != 2);
-    int number = GetNumber(*number);
-
-    if (choice == 1) {
-      Add(number);
-    }else if (choice == 2) {
-      Multiply(number);
-    }
+      printf("Select Add (1) or Multiply (2):");
+        scanf("%d",&operator);
+    }while((operator > 2) || (operator < 1));
+    return operator;
 }
-
-void GetNumber(int* number){
+int getNumber(){
+  int number = 0;
   do {
-    printf("Select a number in the range (1-100): ");
-    scanf("%d",number);
-  } while(number >= 1 && number <=  100 );
-
+    printf("Select a number in the range (1-100):");
+    scanf("%d",&number );
+  }while((number < 1) || (number > 100));
+  return number;
 }
-void Multiply(int *number){
-  long result = 0;
-
-  for (int i = 1; i <= number; i++) {
-    if (i % 3 == 0 || i % 5 == 0) {
-      result*= i;
+void Add(int* number){
+  int sum = 0;
+  for (int i = 3; i <= *number; i++) {
+    if ((i % 3 == 0 )||(i % 5 == 0)) {
+      sum = sum + i;
     }
   }
-  printf("Result: %ld\n",result);
+  printf("The result is: %d\n",sum );
 }
-void Add(int *number){
-  long sum = 0;
-
-  for (int i = 1; i <= number; i++) {
-    if (i % 3 == 0 || i % 5 == 0) {
-      sum+= i;
+void Mult(int* number){
+    long mult = 1;
+    if (*number >= 3) {
+      for (int i = 3; i <= *number; i++) {
+        if ((i % 3 == 0 )||(i % 5 == 0)) {
+          mult = mult * i;
+        }
     }
-  }
-  printf("Result: %ld\n",sum);
+    }
+    printf("The result is: %ld \n",mult );
 }
